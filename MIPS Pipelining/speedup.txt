@@ -1,0 +1,10 @@
+Speedup = cycles before / cycles after
+
+Speedups:
+tb_SimpleAdd = 84 / 31 = 2.71
+tb_SimpleIf = 129 / 52 = 2.48
+tb_SumArray = 1309 / 689 = 1.90
+
+To calculate mean speedup, we use the geometric mean
+
+Mean speedup = (2.71 * 2.48 * 1.90) ^ (1/3) = 2.34

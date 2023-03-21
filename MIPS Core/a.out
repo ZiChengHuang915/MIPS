@@ -1,0 +1,127 @@
+#! /c/Source/iverilog-install/bin/vvp
+:ivl_version "12.0 (devel)" "(s20150603-1110-g18392a46)";
+:ivl_delay_selection "TYPICAL";
+:vpi_time_precision + 0;
+:vpi_module "C:\iverilog\lib\ivl\system.vpi";
+:vpi_module "C:\iverilog\lib\ivl\vhdl_sys.vpi";
+:vpi_module "C:\iverilog\lib\ivl\vhdl_textio.vpi";
+:vpi_module "C:\iverilog\lib\ivl\v2005_math.vpi";
+:vpi_module "C:\iverilog\lib\ivl\va_math.vpi";
+S_000001e70ed46430 .scope module, "testbench" "testbench" 2 14;
+ .timescale 0 0;
+v000001e70ed50700_0 .var "a", 0 0;
+v000001e70ed511a0_0 .var "b", 0 0;
+v000001e70ed50a20_0 .var "cin", 0 0;
+v000001e70ed51240_0 .var "clk", 0 0;
+v000001e70ed507a0_0 .net "cout", 0 0, L_000001e70ed50980;  1 drivers
+v000001e70ed50840_0 .net "sum", 0 0, L_000001e70ed508e0;  1 drivers
+E_000001e70ed57870 .event posedge, v000001e70ed51240_0;
+S_000001e70ed55280 .scope module, "a1" "adder" 2 23, 2 1 0, S_000001e70ed46430;
+ .timescale 0 0;
+    .port_info 0 /INPUT 1 "a";
+    .port_info 1 /INPUT 1 "b";
+    .port_info 2 /INPUT 1 "cin";
+    .port_info 3 /OUTPUT 1 "cout";
+    .port_info 4 /OUTPUT 1 "sum";
+L_000001e70eda2930 .functor BUFT 1, C4<0>, C4<0>, C4<0>, C4<0>;
+v000001e70ec96cd0_0 .net *"_ivl_10", 0 0, L_000001e70eda2930;  1 drivers
+v000001e70ec96800_0 .net *"_ivl_11", 1 0, L_000001e70ed50d40;  1 drivers
+v000001e70ed452e0_0 .net *"_ivl_13", 1 0, L_000001e70ed514c0;  1 drivers
+L_000001e70eda2978 .functor BUFT 1, C4<0>, C4<0>, C4<0>, C4<0>;
+v000001e70ed45380_0 .net *"_ivl_16", 0 0, L_000001e70eda2978;  1 drivers
+v000001e70ed55410_0 .net *"_ivl_17", 1 0, L_000001e70ed512e0;  1 drivers
+v000001e70ed554b0_0 .net *"_ivl_3", 1 0, L_000001e70ed50ca0;  1 drivers
+L_000001e70eda28e8 .functor BUFT 1, C4<0>, C4<0>, C4<0>, C4<0>;
+v000001e70ed55550_0 .net *"_ivl_6", 0 0, L_000001e70eda28e8;  1 drivers
+v000001e70ed555f0_0 .net *"_ivl_7", 1 0, L_000001e70ed50e80;  1 drivers
+v000001e70ed55690_0 .net "a", 0 0, v000001e70ed50700_0;  1 drivers
+v000001e70eda2840_0 .net "b", 0 0, v000001e70ed511a0_0;  1 drivers
+v000001e70ed50b60_0 .net "cin", 0 0, v000001e70ed50a20_0;  1 drivers
+v000001e70ed50ac0_0 .net "cout", 0 0, L_000001e70ed50980;  alias, 1 drivers
+v000001e70ed50c00_0 .net "sum", 0 0, L_000001e70ed508e0;  alias, 1 drivers
+L_000001e70ed50980 .part L_000001e70ed512e0, 1, 1;
+L_000001e70ed508e0 .part L_000001e70ed512e0, 0, 1;
+L_000001e70ed50ca0 .concat [ 1 1 0 0], v000001e70ed50700_0, L_000001e70eda28e8;
+L_000001e70ed50e80 .concat [ 1 1 0 0], v000001e70ed511a0_0, L_000001e70eda2930;
+L_000001e70ed50d40 .arith/sum 2, L_000001e70ed50ca0, L_000001e70ed50e80;
+L_000001e70ed514c0 .concat [ 1 1 0 0], v000001e70ed50a20_0, L_000001e70eda2978;
+L_000001e70ed512e0 .arith/sum 2, L_000001e70ed50d40, L_000001e70ed514c0;
+    .scope S_000001e70ed46430;
+T_0 ;
+    %pushi/vec4 0, 0, 1;
+    %store/vec4 v000001e70ed51240_0, 0, 1;
+    %end;
+    .thread T_0;
+    .scope S_000001e70ed46430;
+T_1 ;
+    %delay 5, 0;
+    %load/vec4 v000001e70ed51240_0;
+    %nor/r;
+    %store/vec4 v000001e70ed51240_0, 0, 1;
+    %jmp T_1;
+    .thread T_1;
+    .scope S_000001e70ed46430;
+T_2 ;
+    %wait E_000001e70ed57870;
+    %pushi/vec4 0, 0, 3;
+    %split/vec4 1;
+    %assign/vec4 v000001e70ed50a20_0, 0;
+    %split/vec4 1;
+    %assign/vec4 v000001e70ed511a0_0, 0;
+    %assign/vec4 v000001e70ed50700_0, 0;
+    %wait E_000001e70ed57870;
+    %pushi/vec4 2, 0, 3;
+    %split/vec4 1;
+    %assign/vec4 v000001e70ed50a20_0, 0;
+    %split/vec4 1;
+    %assign/vec4 v000001e70ed511a0_0, 0;
+    %assign/vec4 v000001e70ed50700_0, 0;
+    %wait E_000001e70ed57870;
+    %pushi/vec4 4, 0, 3;
+    %split/vec4 1;
+    %assign/vec4 v000001e70ed50a20_0, 0;
+    %split/vec4 1;
+    %assign/vec4 v000001e70ed511a0_0, 0;
+    %assign/vec4 v000001e70ed50700_0, 0;
+    %wait E_000001e70ed57870;
+    %pushi/vec4 6, 0, 3;
+    %split/vec4 1;
+    %assign/vec4 v000001e70ed50a20_0, 0;
+    %split/vec4 1;
+    %assign/vec4 v000001e70ed511a0_0, 0;
+    %assign/vec4 v000001e70ed50700_0, 0;
+    %wait E_000001e70ed57870;
+    %pushi/vec4 0, 0, 3;
+    %split/vec4 1;
+    %assign/vec4 v000001e70ed50a20_0, 0;
+    %split/vec4 1;
+    %assign/vec4 v000001e70ed511a0_0, 0;
+    %assign/vec4 v000001e70ed50700_0, 0;
+    %wait E_000001e70ed57870;
+    %pushi/vec4 1, 0, 3;
+    %split/vec4 1;
+    %assign/vec4 v000001e70ed50a20_0, 0;
+    %split/vec4 1;
+    %assign/vec4 v000001e70ed511a0_0, 0;
+    %assign/vec4 v000001e70ed50700_0, 0;
+    %wait E_000001e70ed57870;
+    %pushi/vec4 3, 0, 3;
+    %split/vec4 1;
+    %assign/vec4 v000001e70ed50a20_0, 0;
+    %split/vec4 1;
+    %assign/vec4 v000001e70ed511a0_0, 0;
+    %assign/vec4 v000001e70ed50700_0, 0;
+    %vpi_call 2 33 "$finish" {0 0 0};
+    %end;
+    .thread T_2;
+    .scope S_000001e70ed46430;
+T_3 ;
+    %vpi_call 2 37 "$monitor", "At time %t, a(%0d) + b(%0d) + cin(%0d) = cout(%0d) + sum(%0d)", $time, v000001e70ed50700_0, v000001e70ed511a0_0, v000001e70ed50a20_0, v000001e70ed507a0_0, v000001e70ed50840_0 {0 0 0};
+    %vpi_call 2 38 "$dumpvars", 32'sb00000000000000000000000000000000, S_000001e70ed46430 {0 0 0};
+    %end;
+    .thread T_3;
+# The file index is used to find the file name in the following table.
+:file_names 3;
+    "N/A";
+    "<interactive>";
+    "adder_tb.v";

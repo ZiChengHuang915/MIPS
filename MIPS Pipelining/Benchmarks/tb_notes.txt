@@ -1,0 +1,17 @@
+The testbenches included in a3_tb are:
+
+tb_SimpleAdd
+tb_SimpleIf 		
+tb_SumArray		
+tb_SimpleIf_debug 	
+tb_SumArray_debug
+
+Features of the debug version:
+	- prints out every clock cycle
+	- 5 columns represent IF|ID|EX|ME|WB stages repectively
+	- can additionally printout the PC of each stage, to use this feature:
+	--- name your pipeline PC registers to be pc_ID, pc_EX, pc_ME, and pc_WB. 
+	--- uncomment lines 52-56, 193-197, 332-336 in the a3_tb file
+
+	
+
